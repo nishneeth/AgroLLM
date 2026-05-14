@@ -763,8 +763,9 @@ const SpeakerButton = ({ answer }) => {
     }
     loadVoices();
 
+    const synth = synthRef.current;
     return () => {
-      if (isSpeaking) synthRef.current.cancel();
+      if (isSpeaking) synth.cancel();
     };
   }, [isSpeaking]);
 

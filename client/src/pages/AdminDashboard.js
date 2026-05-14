@@ -88,8 +88,7 @@ const AdminDashboard = () => {
       // Cleanup interval on unmount or when tab changes
       return () => clearInterval(intervalId);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeTab, analyticsPeriod]);
+  }, [activeTab, analyticsPeriod, fetchAnalytics]);
 
   const handleDeleteUserClick = (user) => {
     setUserToDelete(user);

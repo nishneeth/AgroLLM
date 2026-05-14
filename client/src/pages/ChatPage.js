@@ -6,7 +6,6 @@ import { useTheme } from '../contexts/ThemeContext';
 import styles from './ChatPage.module.css';
 import Sidebar from '../components/Chat/Sidebar';
 import ChatArea from '../components/Chat/ChatArea';
-
 import ConfirmationModal from '../components/common/ConfirmationModal';
 
 const ChatPage = () => {
@@ -64,7 +63,7 @@ const ChatPage = () => {
     if (messageAreaRef.current) {
       messageAreaRef.current.scrollTop = messageAreaRef.current.scrollHeight;
     }
-  }, [currentChat, isLoading]);
+  }, [currentChat, isLoading, currentChat?.messages]);
 
 
   useEffect(() => {
