@@ -66,7 +66,7 @@ const AdminDashboard = () => {
     }
   };
 
-  const fetchAnalytics = async () => {
+  const fetchAnalytics = React.useCallback(async () => {
     try {
       const analyticsRes = await getAnalytics(analyticsPeriod);
       setAnalytics(analyticsRes.data.analytics);
@@ -74,7 +74,7 @@ const AdminDashboard = () => {
     } catch (err) {
       console.error('Failed to fetch analytics:', err);
     }
-  };
+  }, [analyticsPeriod]);
 
   useEffect(() => {
     if (activeTab === 'analytics') {
@@ -88,7 +88,7 @@ const AdminDashboard = () => {
       // Cleanup interval on unmount or when tab changes
       return () => clearInterval(intervalId);
     }
-  }, [activeTab, analyticsPeriod, fetchAnalytics]);
+  }, [activeTab, fetchAnalytics]);
 
   const handleDeleteUserClick = (user) => {
     setUserToDelete(user);

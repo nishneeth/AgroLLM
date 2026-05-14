@@ -87,7 +87,7 @@ const MessageArea = memo(({
           .split('\n')
           .map(q => q.trim())
           .filter(q => q.length > 0)
-          .map(q => q.replace(/^[-•*\d+\.\)\s]+/, '').trim()) // Remove bullets, numbers, etc.
+          .map(q => q.replace(/^[-•*\d+.)\s]+/, '').trim()) // Remove bullets, numbers, etc.
           .filter(q => q.length > 0)
           .slice(0, 3); // Limit to 3 questions
         
@@ -516,7 +516,7 @@ const MessageArea = memo(({
   const groupedMessages = useMemo(() => {
     if (!currentChat || !currentChat.messages) return [];
     return groupMessages(currentChat.messages);
-  }, [currentChat?.messages]);
+  }, [currentChat, currentChat?.messages]);
 
   // Memoize rendered messages - only recalculate when messages or chatId changes
   const renderedMessages = useMemo(() => {
@@ -674,7 +674,6 @@ MessageArea.displayName = 'MessageArea';
 const SpeakerButton = ({ answer }) => {
   const [isSpeaking, setIsSpeaking] = React.useState(false);
   const [hovered, setHovered] = React.useState(false);
-  const [showWarning, setShowWarning] = React.useState(false);
   const synthRef = React.useRef(window.speechSynthesis);
   const utterRef = React.useRef(null);
 

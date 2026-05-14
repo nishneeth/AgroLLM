@@ -126,7 +126,7 @@ export const BarChart = ({ data, title, color = '#3b82f6' }) => {
 };
 
 export const PieChart = ({ data, title }) => {
-  if (!data || data.positive === 0 && data.negative === 0) {
+  if (!data || (data.positive === 0 && data.negative === 0)) {
     return <div className={styles.emptyChart}>No data available</div>;
   }
 
