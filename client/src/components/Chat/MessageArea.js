@@ -516,7 +516,7 @@ const MessageArea = memo(({
   const groupedMessages = useMemo(() => {
     if (!currentChat || !currentChat.messages) return [];
     return groupMessages(currentChat.messages);
-  }, [currentChat, currentChat?.messages]);
+  }, [currentChat]);
 
   // Memoize rendered messages - only recalculate when messages or chatId changes
   const renderedMessages = useMemo(() => {
